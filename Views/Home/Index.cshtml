@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    body {
+        background-size: cover;
+        background-position: center;
+        background-image: url('/images/foot.jpg');
+    }
+
+    .jumbotron {
+        
+        background-size: 100% 100%;
+        background-position: center;
+        height: 100vh;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .team-logos {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .team-logo {
+        max-width: 100px;
+        margin: 0 40px;
+    }
+    .animate-description {
+    animation: fadeInUp 1s ease-out 0.5s;
+    }
+
+    .animate-welcome {
+    animation: fadeInUp 1s ease-out;
+    }
+
+    h1, p, a {
+        color: #ffffff;
+        font-weight: bold; /* Make the text bold */
+    }
+</style>
+
+
+<div class="jumbotron text-center">
+    <div class="team-logos">
+        <img src="~/images/Real.png" alt="Team Logo" class="team-logo" />
+        <img src="~/images/ajax.png" alt="Team Logo" class="team-logo" />
+        <img src="~/images/Paris_Saint-Germain.png" alt="Team Logo" class="team-logo" />
+        <img src="~/images/Liverpool_FC.png" alt="Team Logo" class="team-logo" />
+
+        <!-- Ajoutez les logos des autres équipes ici -->
+    </div>
+    
+    <h1 class="display-4">Bienvenue sur notre site de sondage</h1>
+    <hr class="my-4">
+    <p>Participez à notre sondage et donnez votre avis sur les questions liées à la ligue des champions.</p>
+    <a class="btn btn-primary btn-lg" href="/Question/Index" role="button">Voir les questions</a>
+</div>
+<!-- wwwroot/js/index.js -->
+<script src="~/js/index.js"></script>
+

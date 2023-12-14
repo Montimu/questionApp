@@ -1,0 +1,83 @@
+@model QuestionFC.Models.Question
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    body {
+        background-image: url('/images/foot.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #ffffff;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .edit-container {
+        background-color: rgba(104, 124, 130, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+    }
+
+    .edit-container h1,
+    .edit-container h4,
+    .edit-container label {
+        color: #ffffff;
+    }
+
+    .form-control {
+        color: #000000;
+    }
+
+    .btn-primary {
+        background-color: #0066cc;
+        border-color: #0066cc;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0052a3;
+        border-color: #0052a3;
+    }
+</style>
+
+<div class="container mt-5 edit-container">
+    <h1>Edit</h1>
+
+    <h4>Question</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="QuestionId" />
+                <div class="form-group">
+                    <label asp-for="QuestionText" class="control-label"></label>
+                    <input asp-for="QuestionText" class="form-control" />
+                    <span asp-validation-for="QuestionText" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <!-- Reference to a custom JavaScript file if needed -->
+    <script src="~/js/Edit.js"></script>
+}

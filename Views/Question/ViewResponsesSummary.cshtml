@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "View Responses Summary";
+}
+
+<style>
+    body {
+        background-image: url('/images/foot.jpg');
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+        color: #ffffff;
+    }
+
+    table {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+    }
+
+    table th, table td {
+        padding: 10px;
+        text-align: center;
+    }
+</style>
+
+<h1>Liste des repondants</h1>
+
+@if (ViewBag.RespondentNames != null && ViewBag.RespondentNames.Any())
+{
+    <h2>Information from CreateResponseAndOptions</h2>
+    <p>@ViewBag.CreateResponseAndOptionsInfo</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Respondent Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var summary in Model)
+            {
+                <tr>
+                    <td>@summary.OptionText</td>
+                    <td>@summary.NumResponses</td>
+                    <td>
+                        <a asp-action="ViewOptionResponses" asp-route-optionId="@summary.OptionId">Voir les réponses</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No responses available.</p>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <!-- Reference to a custom JavaScript file if needed -->
+    <script src="~/js/ViewResponsesSummary.js"></script>
+}

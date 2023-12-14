@@ -1,0 +1,115 @@
+@model QuestionFC.Models.Question
+<style>
+    body {
+        background-image: url('/images/foot.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h2 {
+        margin-top: 50px;
+    }
+
+    form {
+        background-color: rgba(104, 124, 130, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        width: 400px;
+    }
+
+    label {
+        color: #ffffff;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    #optionsContainer {
+        margin-top: 20px;
+    }
+
+    .option {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .option input {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    #addOption {
+        background-color: #0066cc;
+        color: #ffffff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #addOption:hover {
+        background-color: #0052a3;
+    }
+
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+<h2>Create Question and Options</h2>
+
+@using (Html.BeginForm("CreateQuestionAndOptions", "Question", FormMethod.Post))
+{
+    <div>
+        <label for="QuestionText">Question Text:</label>
+        @Html.EditorFor(model => model.QuestionText)
+        @Html.ValidationMessageFor(model => model.QuestionText, "", new { @class = "text-danger" })
+    </div>
+
+    <h3>Options</h3>
+
+    <div id="optionsContainer">
+        <div class="option">
+            <label for="options[0].OptionText">Option Text:</label>
+            <input type="text" name="options[0].OptionText" />
+            <span class="text-danger"></span>
+        </div>
+    </div>
+
+    <button type="button" id="addOption">Add Option</button>
+
+    <hr />
+
+    <input type="submit" value="Submit" />
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <!-- Ajoutez la référence vers le fichier createQuestion.js -->
+    <script src="~/js/CreateQuestionAndOptions.js"></script>
+}

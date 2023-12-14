@@ -1,0 +1,36 @@
+@model QuestionFC.Models.Option
+
+<h2>Option Responses</h2>
+
+<p>Option: @Model.OptionText</p>
+
+@if (Model.Reponses != null && Model.Reponses.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Respondent Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var response in Model.Reponses)
+            {
+                <tr>
+                    <td>@response.RepondentName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No respondents chose this option.</p>
+}
+
+<a href="@Url.Action("Index", "Question")">Back to Question List</a>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <!-- Reference to a custom JavaScript file if needed -->
+    <script src="~/js/ViewOptionResponses.js"></script>
+}

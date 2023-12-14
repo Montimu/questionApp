@@ -1,0 +1,85 @@
+@model QuestionFC.Models.Question
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iK4t5+qz83r+L4N2DTi+L4IpeVAsjvX4PZheSLeF5jp4U5piNYFOnnN" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('https://example.com/your-background-image.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #ffffff;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .form-container {
+            background-color: rgba(104, 124, 130, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group label {
+            color: #ffffff;
+        }
+
+        .btn-primary {
+            background-color: #0066cc;
+            border-color: #0066cc;
+            border-radius: 5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0052a3;
+            border-color: #0052a3;
+        }
+
+        h4 {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 form-container">
+                <h4>Créer une question</h4>
+                <hr />
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="QuestionText" class="control-label"></label>
+                        <input asp-for="QuestionText" class="form-control" />
+                        <span asp-validation-for="QuestionText" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6pBfxI9tFq0IYi5Hq3BZLiunzNqT+2t" crossorigin="anonymous"></script>
+</body>
+</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <!-- Ajoutez la référence vers le fichier createQuestion.js -->
+    <script src="~/js/Create.js"></script>
+}

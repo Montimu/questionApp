@@ -1,0 +1,75 @@
+@model QuestionFC.Models.Reponse
+
+<style>
+    body {
+        background-image: url('/images/foot.jpg'); /* Remplacez '/images/background.jpg' par le chemin de votre image de fond */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #ffffff;
+    }
+
+    h2 {
+        color: #ffffff;
+    }
+
+    form {
+        background-color: rgba(104, 124, 130, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        color: #ffffff;
+    }
+
+    select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .option-image {
+        max-width: 100px; /* Ajustez la taille de l'image selon vos besoins */
+        margin-left: 10px;
+    }
+</style>
+
+<h2>Create Response</h2>
+
+@using (Html.BeginForm("CreateResponse", "Question", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="RepondentName">Respondent Name:</label>
+        @Html.EditorFor(model => model.RepondentName)
+        @Html.ValidationMessageFor(model => model.RepondentName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="QuestionId">Select Question:</label>
+        @Html.DropDownListFor(model => model.Option.QuestionId, new SelectList(ViewBag.Questions, "QuestionId", "QuestionText"), "Select a question")
+        @Html.ValidationMessageFor(model => model.Option.QuestionId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="OptionId">Select Option:</label>
+        @Html.DropDownListFor(model => model.OptionId, new SelectList(ViewBag.Options, "OptionId", "OptionText"), "Select an option")
+        @Html.ValidationMessageFor(model => model.OptionId, "", new { @class = "text-danger" })
+
+        <img class="option-image" src="/images/zla.jpg" alt="Option Image" />
+    </div>
+
+    <input type="submit" value="Submit" />
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <!-- Ajoutez la référence vers le fichier createQuestion.js -->
+    <script src="~/js/CreateResponse.js"></script>
+}

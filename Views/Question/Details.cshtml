@@ -1,0 +1,83 @@
+@model QuestionFC.Models.Question
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    body {
+        background-image: url('/images/foot.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #ffffff;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .details-container {
+        background-color: rgba(104, 124, 130, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+    }
+
+    .details-container h1,
+    .details-container h4 {
+        color: #ffffff;
+    }
+
+    .details-container dl {
+        margin-top: 20px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        background-color: #0066cc;
+        border-color: #0066cc;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        background-color: #0052a3;
+        border-color: #0052a3;
+    }
+</style>
+
+<div class="container mt-5 details-container">
+    <h1>Question Details</h1>
+
+    <div>
+        <h4>Question Information</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                <strong>Question Text</strong>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.QuestionText)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="mt-4">
+        <!-- Edit button -->
+        <a asp-action="Edit" asp-route-id="@Model?.QuestionId" class="btn btn-primary">Edit Question</a>
+
+        <!-- Back to List button -->
+        <a asp-action="Index" class="btn btn-secondary ml-2">Back to Question List</a>
+    </div>
+</div>
+
+<!-- Optional: Add your custom scripts or refer to external scripts if needed -->
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <!-- Reference to a custom JavaScript file if needed -->
+    <script src="~/js/DetailsQuestion.js"></script>
+}
